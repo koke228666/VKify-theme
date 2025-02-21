@@ -1,0 +1,14 @@
+id: vkify
+version: "1.0.0.0"
+openvk_version: 0
+enabled: 1
+override_templates: true
+inherits_master: false
+metadata:
+    name:
+        _: "VKify"
+        en: "VKify"
+        ru: "VKify"
+        uk: "VKify"
+    author: "koke228"
+    description: "Some shit"
