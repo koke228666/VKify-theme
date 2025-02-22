@@ -115,7 +115,7 @@
                 } else {
                     $(".content table").width("100%")
                     $(".container_gray").html(`
-                        <center style="background: white;border: #DEDEDE solid 1px;margin-top: 10px;">
+                        <center style="background: white;border: #DEDEDE solid 1px;">
                             <span style="color: #707070;margin: 60px 0;display: block;">
                                 {_no_data_description|noescape}
                             </span>

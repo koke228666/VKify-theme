@@ -149,10 +149,6 @@ body.dimmed>.dimmer {
 	background: #5A7DA3;
 }
 
-img.name-checkmark {
-	content: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAALCAYAAACksgdhAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAACGSURBVChTY/z//z8DqYAJSpMEaKPJIWXif/PYHhQ/4NXkkTP1v6KsAAMnOytUBAJwagJpkBTlYXj++gvDgTn5jFBhMGACWQ1yApQPBsgadkzJRtEAAkwgq0FOACkECRDSAALgeIIphAF8GkAA7CeQApBCECCkAQxANsGwXmg7kELwseP/DADRzl7+shTnTgAAAABJRU5ErkJggg==");
-}
-
 .map_svg_icon {
 	fill: #6080A0;
 }
@@ -678,6 +674,7 @@ body, h4 {
  font-size: 11px;
  overflow-y: auto;
  max-height: 300px;
+ margin-top: 6px;
 }
 .bigPlayer .playButtons .nextButton, .bigPlayer .playButtons .backButton {
   opacity: 0.83;
@@ -995,6 +992,7 @@ img[src*="/assets/packages/static/openvk/img/oxygen-icons/16x16/actions/insert-l
   font-size: 10px;
   text-align: right;
   padding-right: 17px;
+  text-shadow: none !important;
 }
 .page_header.search_expanded .friends_online {
   display: none;
@@ -1056,10 +1054,10 @@ img[src*="/assets/packages/static/openvk/img/oxygen-icons/16x16/actions/insert-l
   border: 1px solid #45688e !important;
 }
 .ovk-diag-body {
-  padding: 0px;
   border: 1px solid #999;
   border-bottom: none;
   border-top: none;
+  padding: 20px !important;
 }
 .ovk-diag-action {
   border: 1px solid #999 !important;
@@ -1091,4 +1089,18 @@ body.dimmed > .dimmer {
 }
 #ajax_audio_player {
 	width: 155px !important;
+}
+.profile_info_link {
+display: block;
+padding: 8px 0px 9px 127px;
+user-select: none;
+}
+.profile_info_link:hover {
+background: #E9EDF1;
+}
+.right_big_block .content_title_expanded[onclick="hidePanel(this);"]:not(.content_divider .content_title_expanded) {
+display: none;
+}
+.right_big_block .content_title_expanded[onclick="hidePanel(this);"]:not(.content_divider .content_title_expanded) + div {
+display: none;
 }

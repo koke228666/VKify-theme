@@ -9,6 +9,17 @@ function setTip(obj, text, interactive=false) {
 	});
 }
 
+async function updateOnline() {
+	const friendson = (await window.OVKAPI.call("friends.get", {"user_id": window.openvk.current_id, "count": 99999})).items.filter(user => user.online === 1).length
+	if (Number(friendson) > 99) {
+		document.querySelector('.friends_online').textContent = "99+"
+	} else {
+		document.querySelector('.friends_online').textContent = friendson
+	}
+}
+updateOnline();
+setInterval(() => updateOnline(), 5000);
+
 function toggleMusic() {
 		const headerMusicBtn = document.querySelector('.headerMusicBtn');
 
@@ -40,29 +51,54 @@ function toggleMusic() {
 		}
 	}
 
-function minifyajplayer() {
-	document.querySelectorAll("#aj_player_internal_controls").forEach(function (element) {
-		element.innerHTML = `
+window.player.ajCreate = function() {
+	const previous_time_x = localStorage.getItem('audio.lastX') ?? 100
+	const previous_time_y = localStorage.getItem('audio.lastY') ?? scrollY
+	const miniplayer_template = u(`
+		<div id='ajax_audio_player' class='ctx_place'>
+			<div id="aj_player">
+				<div id="aj_player_internal_controls">
 					<div id="aj_player_play">
 						<div id="aj_player_play_btn" class="paused"></div>
 					</div>
 					<div id="aj_player_track" style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;transform: translateY(-2px);">
 						<div id="aj_player_track_name">
 							<a id="aj_player_track_title" class="noOverflow" style="max-width: 300px;user-select: none;cursor: unset;">
-								<b>?</b>
+								<b>Unknown</b>
 								<br>
-								<span>?</span>
+								<span>Untitled</span>
 							</a>
 						</div>
 					</div>
-`;
-	});
-	window.player.__updateFace();
+				  </div>
+				<div id="aj_player_close_btn"></div>
+			</div>
+		</div>
+	`)
+	u('body').append(miniplayer_template)
+	miniplayer_template.attr('style', `left:${previous_time_x}px;top:${previous_time_y}px`)
+	miniplayer_template.find('#aj_player_close_btn').on('click', (e) => {
+		this.ajClose()
+	})
+	$('#ajax_audio_player').draggable({
+		cursor: 'grabbing', 
+		containment: 'window',
+		cancel: '#aj_player_track .selectableTrack, #aj_player_volume .selectableTrack, #aj_player_buttons',
+		stop: function(e) {
+			if(window.player.ajaxPlayer.length > 0) {
+				const left = parseInt(window.player.ajaxPlayer.nodes[0].style.left)
+				const top  = parseInt(window.player.ajaxPlayer.nodes[0].style.top)
+
+				localStorage.setItem('audio.lastX', left)
+				localStorage.setItem('audio.lastY', top)
+			}
+		}
+	})
 }
 
 function parseAudio() {
 	const audioDump = localStorage.getItem('audio.lastDump');
-	const nothingtemplate = `<div class="vkifytracksplaceholder"><center style="background: white;border: #DEDEDE solid 1px;font-size: 11px;">
+	const nothingtemplate = `<div class="vkifytracksplaceholder"><center style="background: white;border: #DEDEDE solid 1px;font-size: 11px;margin-top: 9px;margin-bottom: 3px;">
 								<span style="color: #707070;margin: 60px 0;display: block;">
 									${tr('no_data_description')}
 								</span>
@@ -298,7 +334,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         };
         window.player.initEvents();
 	toggleMusic();
-	minifyajplayer();
 	/* я украл эту хрень из исходников, хз как оно работает лол */
 	u(`#search_box form input[type="search"]`).on('focus', (e) => {
 		u('.page_header').addClass('search_expanded')
