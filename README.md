@@ -1,3 +1,5 @@
+## Если вам нужен юзерскрипт, то вам [сюда](https://github.com/koke228666/VKify)
+<br><br>
 используйте на свой страх и ириски, тема ваще нестабильна и ничо не гарантирую.
 
 ![жесть](https://github.com/user-attachments/assets/5dd945ee-6df2-4556-beac-0352b55ddfab)
