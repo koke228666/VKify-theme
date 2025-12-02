@@ -13,8 +13,10 @@ let locales = {
 		"graffitithickness": "Thickness:",
 		"usetruegraffiti": "Use graffiti from VKontakte",
 		"ovkhat": "Use OpenVK logo in header",
-		"httpwarn": "This OpenVK instance uses outdated <b>http</b> protocol.<br>Please, migrate to <b>https</b>.",
-		"httpwarnovk": "You are using an insecure protocol: <b>http</b>. Please always use <b>https</b>.<br><a href='https://ovk.to'>Switch to https »</a>"
+		"httpwarn": "This OpenVK instance uses insecure <b>http</b> protocol.<br>Please, migrate to <b>https</b>.",
+		"httpwarnovk": "You are using an insecure protocol: <b>http</b>. Please always use <b>https</b>.<br><a href='https://ovk.to'>Switch to https »</a>",
+		"postremoved": "Message removed.",
+		"postremove": "Are you sure you want to remove that message?"
 	},
 	'ru': {
 		"headmusic": "музыка",
@@ -30,8 +32,10 @@ let locales = {
 		"graffitithickness": "Толщина:",
 		"usetruegraffiti": "Использовать граффити из ВКонтакте",
 		"ovkhat": "Использовать лого OpenVK в шапочке",
-		"httpwarn": "Этот инстанс использует устаревший протокол <b>http</b>.<br>Пожалуйста, смените его на <b>https</b>.",
-		"httpwarnovk": "Вы используете небезопасный протокол <b>http</b>. Пожалуйста, всегда используйте <b>https</b>.<br><a href='https://ovk.to'>Перейти на https »</a>"
+		"httpwarn": "Этот инстанс использует небезопасный протокол <b>http</b>.<br>Пожалуйста, смените его на <b>https</b>.",
+		"httpwarnovk": "Вы используете небезопасный протокол <b>http</b>. Пожалуйста, всегда используйте <b>https</b>.<br><a href='https://ovk.to'>Перейти на https »</a>",
+		"postremoved": "Сообщение удалено.",
+		"postremove": "Вы действительно хотите удалить это сообщение?"
 	}
 }
 

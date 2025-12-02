@@ -17,7 +17,7 @@
         {include "../components/paginator.xml", conf => $paginatorConf}
     </center>
 
-    {if isset($thisUser) && $thisUser->hasMicroblogEnabled()}
+    {if isset($thisUser)}
         {script "js/al_comments.js"}
     {/if}
 {/block}

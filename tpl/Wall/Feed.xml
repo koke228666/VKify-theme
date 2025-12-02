@@ -19,7 +19,7 @@
         <a href='#' id="__feed_settings_link" data-pagescount='{ceil($paginatorConf->count / $paginatorConf->perPage)}'>{_feed_settings}</a>
     </div>
 
-    <div n:class="postFeedWrapper, $thisUser->hasMicroblogEnabled() ? postFeedWrapperMicroblog">
+    <div class="postFeedWrapperMicroblog">
         {include "../components/textArea.xml", route => "/wall" . $thisUser->getId() . "/makePost", graffiti => true, polls => true, notes => true, hasSource => true, geo => true}
     </div>
     

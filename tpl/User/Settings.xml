@@ -560,7 +560,7 @@
                             </select>
                         </td>
                     </tr>
-                    <tr>
+                    <tr style="display: none;">
                         <td width="120" valign="top">
                             <span class="nobold">{_ui_settings_view_of_posts}</span>
                         </td>

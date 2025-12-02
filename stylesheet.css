@@ -73,6 +73,10 @@ body, h4 {
     background: #5e82a8;
 }
 
+.right_big_block table {
+  border-spacing: 3px;
+}
+
 #activetabs {
   background: #597da3;
   border-radius: 3px 3px 0px 0px;
@@ -88,9 +92,10 @@ body, h4 {
 
 .tabs {
   border-bottom: 1px solid #597da3;
-  margin-left: -12px;
-  margin-right: -6px;
+  margin-left: -10px;
+  margin-right: 0px;
   width: 100%;
+  padding: 0 9px 0 8px;
 }
 
 .tab {
@@ -1389,6 +1394,11 @@ background-position: -108px -52px !important;
 .right_small_block .ovk-album .albumPreview {
   position: relative;
 }
+.albumPreview {
+  object-fit: cover;
+  width: 75px;
+  height: 45px;
+}
 
 .ovk-album {
   display: inline-block;
@@ -2230,4 +2240,47 @@ input[class="button"] {
 }
 .crp-entry:hover {
   background-color: #edf1f6;
+}
+
+input[type=checkbox] {
+    background-image: url("data:image/gif;base64,R0lGODlhDwA4AKIHANrh6P///8DK1a22wF+DpbfAy9/l6v///yH5BAEAAAcALAAAAAAPADgAAAOzKLrMJyHKGcWjOFiY5+7eBVbi+I1aCZ6m2rGrm21NrTx2LWMEwYE93yho+PF6gmKHyCJIiEVRMABNcQzBnsFAumK13K5kS9iGjNuwBPbC5RyDuHw+PwwA+LweP7Dv/wB9d4B6goSFfod8iYqGioGMh46NkYSTkpWAgnSccXadnJl/PYOHQaWAQQWoe6qrhK6MBHmujkEArpCDBVkEBQWLu7w9v3mTv77AxpG/ysusmp+gdQkAOw==");
+    width: 15px;
+}
+input[type="radio"] {
+  background-image: url("data:image/gif;base64,R0lGODlhDgA4AMQAAAAAAP///7fAy9/k6sDK1a22wMPL1M/W3rvJ19rh6F+DpZyyxq/B0sfT3tfg6LDBz9/l6u/y9Ozv8efq7P///wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACH5BAEAABQALAAAAAAOADgAAAX/ICVSEmES0jiWRBQEkZmK5fDewYCKhI3fOhLh90O1iLjYEIkzMZvHZ6z0DOx6zKDQh9PNhFHld3XaqcinMc3kgsnIXKAZiwxSXw4Gw3Ezth0KgQp8bksBDIIKDH2GiIIMEC9seIkNkVOGeQyWkil0LxCROQRrcS9eaG1iZ2BvrBQTBbIFE6yxBQcJCQeytSKxBrrCCQa0IgXBw8LFsAXKyrS4z8O8ztPDstfY0tq8sdoJxsjXzM3Jw8W+zdzV6iO3va/r8We3ubv05s/px+fKzN90IViwAIGwaPcQJDKIz1qCBYkWHHQIUdACAbpkJUz0AKM3hwMXdMxYa5wwARiJDxX4ZRKdMZbs8r2b9VJECAA7");
+}
+
+.post_removed {
+  padding: 5px 0px 8px 0px;
+  max-width: 100%;
+  width: 100%;
+  overflow: hidden;
+  display: block;
+  color: #777;
+  border-top: 1px solid #f1f1f1;
+  text-align: center;
+}
+.post {
+  border-top: 1px solid #F1F1F1;
+}
+
+#backdropEditor {
+  position: relative;
+  border: 4px inset #cfcfcf;
+  padding: 8px;
+  width: 550px;
+  height: 270px;
+  margin: 8px auto;
+  background-image: url("../img/backdrop-editor.gif");
+  background-size: cover;
+}
+
+.gift_sel strong.gift_price,
+.gift_sel strong.gift_limit {
+    visibility: hidden;
+}
+
+.gift_sel:hover strong.gift_price,
+.gift_sel:hover strong.gift_limit {
+    visibility: unset;
 }

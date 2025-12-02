@@ -1,5 +1,6 @@
 {block ViewContent}
     <div class="container_gray" style="margin-top: 16px; margin-bottom: 16px; max-width: 100%;">
+		<!-- я бы нахуй с удовольствием вырезал всё, связанное с олдпост, но чёто мне лень пока разбираться сори -->
         {if $type == "post"}
             {include "../components/post/oldpost.xml",
                 post => $object,

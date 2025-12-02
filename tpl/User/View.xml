@@ -73,11 +73,13 @@
             {var $hasAvatar = !str_contains($user->getAvatarUrl('miniscule'), "/assets/packages/static/openvk/img/camera_200.png")}
             
             {if $thisUser && $user->getId() == $thisUser->getId()}
-                <a {if $hasAvatar}style="display:none"{/if} class="add_image_text" id="add_image">{_add_image}</a>
-                <div {if !$hasAvatar}style="display:none"{/if} class="avatar_controls">
-                    <div class="avatarDelete hoverable"></div>
+                <div class="avatar_controls">
+                    <div {if !$hasAvatar}style="display:none"{/if} class="avatarDelete hoverable"></div>
                     <div class="avatar_variants">
-                        <a class="_add_image hoverable" id="add_image"><span>{_upload_new_picture}</span></a>
+                        <a {if $hasAvatar}style="display:none"{/if} class="_add_image hoverable upload_image" id="add_image">
+						<span>{_add_image}</span></a>
+                        <a {if !$hasAvatar}style="display:none"{/if} class="_add_image hoverable set_image" id="add_image">
+						<span>{_upload_new_picture}</span></a>
                     </div>
                 </div>
             {/if}
@@ -85,10 +87,7 @@
                 <img src="{$user->getAvatarUrl('normal')}"
                      alt="{$user->getCanonicalName()}"
                      id="bigAvatar"
-                     style="width: 100%; image-rendering: -webkit-optimize-contrast;"
-					 {if ($user->getAvatarPhoto())}
-					 onclick="OpenMiniature(event, {$user->getAvatarUrl('normal')}, null, {$user->getAvatarPhoto()->getPrettyId()}, null)" />
-					 {/if}
+                     style="width: 100%; image-rendering: -webkit-optimize-contrast;" />
             </a>
         </div>
 		{if $user->getId() != $thisUser->getId()}
@@ -371,7 +370,7 @@
 									</div>
 									<img
 										src="{is_null($cover)?'/themepack/vkify/2.0.0.0/resource/m_noalbum.png':$cover->getURLBySizeId('small')}"
-										style="{is_null($cover)?'':'width: 178px;'|noescape}"
+										style="{is_null($cover)?'width:130px;height:97px;':'width: 178px;'|noescape}"
 										class="albumPreview" loading=lazy />
 								</div>
 							</a>

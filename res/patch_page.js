@@ -103,7 +103,7 @@ window.changeLangPopup = function() {
 <a href="/language?lg=ru_old&hash=${encodeURIComponent(window.router.csrf)}&jReturnTo=${encodeURI(window.location.pathname + window.location.search)}">
    <div class="langSelect"><img style="margin-right: 14px;" src="/themepack/vkify/1.0.0.0/resource/lang_flags/imp.png"><b>Дореволюціонный</b></div>
 </a>
-<a href="/language" onclick="langPopup.close(); allLangsPopup(); return false;">
+<a href="/language" onclick="langPopup.close(); allLangsPopup(); preventDefault(); return false;">
    <div class="langSelect"><b style="padding: 2px 2px 2px 48px;">All languages »</b></div>
 </a>`,
             buttons: [tr('close')],
@@ -1506,3 +1506,64 @@ if (today.getDate() === 1 && today.getMonth() === 3) {
 		if (u(this).find('#liked').length) {Doge.show();}
 	});
 }
+
+window.openJsSettings = function() {
+    const CURRENT_AUTO_SCROLL = Number(localStorage.getItem('ux.auto_scroll') ?? 1)
+    const CURRENT_DISABLE_AJAX = Number(localStorage.getItem('ux.disable_ajax_routing') ?? 0)
+		let settings_main = document.querySelector("#_js_settings_main");
+
+		if (settings_main) {settings_main.remove()} else {
+
+   		 document.querySelector("#_js_settings").insertAdjacentHTML('beforeend', `
+	<tbody id="_js_settings_main">
+        <tr>
+            <td width="120" valign="top">
+                <span class="nobold">
+                    <input type='checkbox' data-act='localstorage_item' data-inverse="1" name='ux.disable_ajax_routing' id="ux.disable_ajax_routing" ${CURRENT_DISABLE_AJAX == 0 ? 'checked' : ''}>
+                </span>
+            </td>
+            <td>
+                <label for='ux.disable_ajax_routing'>${tr('ajax_routing')}</label>
+            </td>
+        </tr>
+        <tr>
+            <td width="120" valign="top">
+                <span class="nobold">
+                    <input type='checkbox' data-act='localstorage_item' name='ux.auto_scroll' id="ux.auto_scroll" ${CURRENT_AUTO_SCROLL == 1 ? 'checked' : ''}>
+                </span>
+            </td>
+            <td>
+                <label for='ux.auto_scroll'>${tr('auto_scroll')}</label>
+            </td>
+        </tr>    
+	</tbody>`
+  	 	 )
+  }
+}
+
+window.router.applyTweaks = function() {
+	//сори мрильюев кнш, но так надо
+}
+
+u(document).on('click', '.post a.delete', function (e) {
+    e.preventDefault();
+	e.stopPropagation();
+	
+    MessageBox(tr("confirm"), `
+        ${window.vkifylang.postremove}
+    `, [tr("yes"), tr("cancel")], [
+        () => {
+			const url = this.getAttribute('href');
+			fetch(url, {
+				method: 'POST'
+			})
+			.then(() => {
+				this.closest(".post").outerHTML = `<div class="post_removed">${window.vkifylang.postremoved}</div>`;
+			})
+			.catch(err => {
+				console.error(err);
+			});
+        },
+        Function.noop
+    ]);
+});
