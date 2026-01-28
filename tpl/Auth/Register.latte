@@ -7,20 +7,20 @@
 
 {block headIncludes}
     {if !$referer}
-        <meta name="description" content="{tr('register_meta_desc', OPENVK_ROOT_CONF['openvk']['appearance']['name'])}" />
+        <meta name="description" content="{tr('register_meta_desc', \OPENVK_ROOT_CONF['openvk']['appearance']['name'])}" />
     {else}
-        <meta property="og:title" content="{tr('register_referer_meta_title', $referer->getFullName(), OPENVK_ROOT_CONF['openvk']['appearance']['name'])}" />
+        <meta property="og:title" content="{tr('register_referer_meta_title', $referer->getFullName(), \OPENVK_ROOT_CONF['openvk']['appearance']['name'])}" />
         <meta property="og:image" content="{$referer->getAvatarUrl()}" />
         
         <meta name="description"
-              content="{tr('register_referer_meta_desc', $referer->getFullName(), OPENVK_ROOT_CONF['openvk']['appearance']['name'])}" />
+              content="{tr('register_referer_meta_desc', $referer->getFullName(), \OPENVK_ROOT_CONF['openvk']['appearance']['name'])}" />
     {/if}
 {/block}
 
 {block content}
-    {if OPENVK_ROOT_CONF['openvk']['preferences']['registration']['enable'] || $referer}
+    {if \OPENVK_ROOT_CONF['openvk']['preferences']['registration']['enable'] || $referer}
         <p n:if="!is_null($referer)" align="center">
-            {tr("invites_you_to", $referer->getFullName(), OPENVK_ROOT_CONF['openvk']['appearance']['name'])|noescape}
+            {tr("invites_you_to", $referer->getFullName(), \OPENVK_ROOT_CONF['openvk']['appearance']['name'])|noescape}
         </p>
 	<div style="margin: 10px;">
         <h2 class="header2">{_registration}</h2>

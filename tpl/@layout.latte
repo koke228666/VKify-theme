@@ -1,4 +1,4 @@
-{var $instance_name = OPENVK_ROOT_CONF['openvk']['appearance']['name']}
+{var $instance_name = \OPENVK_ROOT_CONF['openvk']['appearance']['name']}
 {if !isset($parentModule) || substr($parentModule, 0, 21) === 'libchandler:absolute.'}
 <!DOCTYPE html>
 <html>
@@ -67,7 +67,7 @@
             </p>
         </div>
 
-        <div n:if="OPENVK_ROOT_CONF['openvk']['preferences']['bellsAndWhistles']['testLabel']" id="test-label">FOR TESTING PURPOSES ONLY</div>
+        <div n:if="\OPENVK_ROOT_CONF['openvk']['preferences']['bellsAndWhistles']['testLabel']" id="test-label">FOR TESTING PURPOSES ONLY</div>
 
         <div class="notifications_global_wrap"></div>
         <div class="dimmer">
@@ -217,7 +217,7 @@
 
                             {var $canAccessAdminPanel = $thisUser->getChandlerUser()->can("access")->model("admin")->whichBelongsTo(NULL)}
                             {var $canAccessHelpdesk   = $thisUser->getChandlerUser()->can("write")->model('openvk\Web\Models\Entities\TicketReply')->whichBelongsTo(0)}
-                            {var $menuLinksAvaiable   = sizeof(OPENVK_ROOT_CONF['openvk']['preferences']['menu']['links']) > 0 && $thisUser->getLeftMenuItemStatus('links')}
+                            {var $menuLinksAvaiable   = sizeof(\OPENVK_ROOT_CONF['openvk']['preferences']['menu']['links']) > 0 && $thisUser->getLeftMenuItemStatus('links')}
                             <div n:if="$canAccessAdminPanel || $canAccessHelpdesk || $menuLinksAvaiable" class="menu_divider"></div>
                             <a href="/admin" class="link" n:if="$canAccessAdminPanel" title="{_admin} [Alt+Shift+A]" accesskey="a" rel="nofollow">{_admin}</a>
                             <a href="/support/tickets" class="link" n:if="$canAccessHelpdesk" rel="nofollow">{_helpdesk}
@@ -239,7 +239,7 @@
                             </a>
                         <a
                           n:if="$thisUser->getLeftMenuItemStatus('links')"
-                          n:foreach="OPENVK_ROOT_CONF['openvk']['preferences']['menu']['links'] as $menuItem"
+                          n:foreach="\OPENVK_ROOT_CONF['openvk']['preferences']['menu']['links'] as $menuItem"
                           href="{$menuItem['url']}"
                           target="_blank"
                           class="link">
@@ -259,7 +259,7 @@
                                 </a>
                             </div>
 
-                            <div id="news" n:if="OPENVK_ROOT_CONF['openvk']['preferences']['news']['show']">
+                            <div id="news" n:if="\OPENVK_ROOT_CONF['openvk']['preferences']['news']['show']">
                                 <b>{_news} </b>
                                 <hr size="1">
                                 <text>{$newsText}...</text>
@@ -267,14 +267,14 @@
                                 <a href="{$newsLink}">{_news_more}</a>
                             </div>
                             
-                            <div n:if="OPENVK_ROOT_CONF['openvk']['preferences']['commerce'] && $thisUser->getCoins() != 0" id="votesBalance">
+                            <div n:if="\OPENVK_ROOT_CONF['openvk']['preferences']['commerce'] && $thisUser->getCoins() != 0" id="votesBalance">
                                 {tr("you_still_have_x_points", $thisUser->getCoins())|noescape}
                                 <br /><br />
                                 
                                 <a href="/settings?act=finance">{_top_up_your_account} &#xbb;</a>
                             </div>
                             
-                            <a n:if="OPENVK_ROOT_CONF['openvk']['preferences']['adPoster']['enable'] && $thisUser->getLeftMenuItemStatus('poster')" href="{php echo OPENVK_ROOT_CONF['openvk']['preferences']['adPoster']['link']}" >
+                            <a n:if="\OPENVK_ROOT_CONF['openvk']['preferences']['adPoster']['enable'] && $thisUser->getLeftMenuItemStatus('poster')" href="{php echo OPENVK_ROOT_CONF['openvk']['preferences']['adPoster']['link']}" >
                                 <img src="{php echo OPENVK_ROOT_CONF['openvk']['preferences']['adPoster']['src']}" alt="{php echo OPENVK_ROOT_CONF['openvk']['preferences']['adPoster']['caption']}" class="psa-poster" style="max-width: 100%; margin-top: 10px;" />
                             </a>
 
@@ -330,7 +330,7 @@
                             <input type="hidden" name="hash" value="{$csrfToken}" />
                             <input type="submit" value="{_log_in}" class="button" style="display: inline-block; font-family: Tahoma" />
                             <a href="/reg"><input type="button" value="{_registration}" class="button" style="font-family: Tahoma" /></a><br><br>
-                            {if !OPENVK_ROOT_CONF['openvk']['preferences']['security']['disablePasswordRestoring']}<a href="/restore">{_forgot_password}</a>{/if}
+                            {if !\OPENVK_ROOT_CONF['openvk']['preferences']['security']['disablePasswordRestoring']}<a href="/restore">{_forgot_password}</a>{/if}
                         </form>
                     {/ifset}
                     </div>
@@ -429,10 +429,10 @@
         
         <script>bsdnHydrate();</script>
 
-        <script n:if="OPENVK_ROOT_CONF['openvk']['telemetry']['plausible']['enable']" async defer data-domain="{php echo OPENVK_ROOT_CONF['openvk']['telemetry']['plausible']['domain']}" src="{php echo OPENVK_ROOT_CONF['openvk']['telemetry']['plausible']['server']}js/plausible.js"></script>
+        <script n:if="\OPENVK_ROOT_CONF['openvk']['telemetry']['plausible']['enable']" async defer data-domain="{php echo \OPENVK_ROOT_CONF['openvk']['telemetry']['plausible']['domain']}" src="{php echo OPENVK_ROOT_CONF['openvk']['telemetry']['plausible']['server']}js/plausible.js"></script>
         
-        <script n:if="OPENVK_ROOT_CONF['openvk']['telemetry']['piwik']['enable']">
-            {var $piwik = (object) OPENVK_ROOT_CONF['openvk']['telemetry']['piwik']}
+        <script n:if="\OPENVK_ROOT_CONF['openvk']['telemetry']['piwik']['enable']">
+            {var $piwik = (object) \OPENVK_ROOT_CONF['openvk']['telemetry']['piwik']}
             
             //<![CDATA[
             (function(window,document,dataLayerName,id){ 
@@ -446,8 +446,8 @@
             //]]>
         </script>
         
-        <script n:if="OPENVK_ROOT_CONF['openvk']['telemetry']['matomo']['enable']">
-            {var $matomo = (object) OPENVK_ROOT_CONF['openvk']['telemetry']['matomo']}
+        <script n:if="\OPENVK_ROOT_CONF['openvk']['telemetry']['matomo']['enable']">
+            {var $matomo = (object) \OPENVK_ROOT_CONF['openvk']['telemetry']['matomo']}
             //<![CDATA[
             var _paq = window._paq = window._paq || [];
             _paq.push(['trackPageView']);

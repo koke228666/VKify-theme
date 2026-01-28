@@ -243,7 +243,7 @@
         </div>
         <br />
 		<div class="leftDataBlock">
-			<div class="giftsDataBlock" n:if="OPENVK_ROOT_CONF['openvk']['preferences']['commerce'] && ($giftCount = $user->getGiftCount()) > 0">
+			<div class="giftsDataBlock" n:if="\OPENVK_ROOT_CONF['openvk']['preferences']['commerce'] && ($giftCount = $user->getGiftCount()) > 0">
 				<a href="/gifts{$user->getId()}">
 					<div class="content_title_expanded">
 						{_gifts}
@@ -272,7 +272,7 @@
 
 			</div>
 			{if $user->getId() != $thisUser->getId()}
-			<div class="sendGift" n:if="OPENVK_ROOT_CONF['openvk']['preferences']['commerce']">
+			<div class="sendGift" n:if="\OPENVK_ROOT_CONF['openvk']['preferences']['commerce']">
 				<a href="/gifts?act=pick&user={$user->getId()}" class="sendGiftlnk">{tr("send_gift")}</a>
 			</div>
 			{/if}
