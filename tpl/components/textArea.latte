@@ -1,5 +1,5 @@
 {php if(!isset($GLOBALS["textAreaCtr"])) $GLOBALS["textAreaCtr"] = 10;}
-{var $textAreaId = ($post ?? NULL) === NULL ? (++$GLOBALS["textAreaCtr"]) : $post->getId()}
+{php $textAreaId = ($post ?? NULL) === NULL ? (++$GLOBALS["textAreaCtr"]) : $post->getId()}
 {var $textAreaId = ($custom_id ?? NULL) === NULL ? $textAreaId : $custom_id}
 
 <div id="write" class='model_content_textarea' style="padding: 4px 1px 2px 1px;">
