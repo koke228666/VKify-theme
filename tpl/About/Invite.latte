@@ -1,0 +1,44 @@
+{extends "../@layout.latte"}
+{block title}{_invite}{/block}
+
+{block header}
+    {_invite}
+{/block}
+
+{block content}
+	<style>
+	.page-wrap {
+		padding: 0 !important;
+		padding-top: 12px !important;
+	}
+	.page_content {
+	  display: inline-block;
+	  width: 100% !important;
+	}
+	</style>
+    <div class="tabs stupid-fix">
+        <div class="tab" id="ki">
+            <a href="/friends{$thisUser->getId()}" id="ki">{_all_friends}</a>
+        </div>
+        <div class="tab" id="ki">
+            <a href="/friends{$thisUser->getId()}?act=online" id="ki">{_online}</a>
+        </div>
+        <div class="tab" id="ki">
+            <a href="/friends{$thisUser->getId()}?act=incoming" id="ki">{_req}</a>
+        </div>
+        <div class="tab" id="activetabs">
+            <a href="/invite" id="act_tab_a">{_invite}</a>
+        </div>
+    </div>
+    <div class="invitebox">
+        {_you_can_invite}<br />
+        <br />
+		<center>
+			<input type="text" readonly value="https://{$_SERVER["HTTP_HOST"]}/reg?ref={rawurlencode($thisUser->getRefLinkId())}" size="50" />
+		</center>
+        <p>{_you_can_invite_2}</p>
+    </div>
+
+{/block}
+
+
