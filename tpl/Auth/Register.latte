@@ -76,7 +76,8 @@
                             <input type="password" name="password" required />
                         </td>
                     </tr>
-		        </table>
+                </tbody>
+            </table>
 		        <table cellspacing="7" cellpadding="0" width="52%" border="0" align="center">
                         <tr>
                         <h4 style="margin-left: 60px;">{_other_fields}</h4>
@@ -118,7 +119,6 @@
                         <br /><br />
                         <input type="submit" value="{_registration}" class="button" /><br><br>
                         </div>
-                </tbody>
         </form>
     </div>
     {else}
@@ -131,9 +131,9 @@
 	                </td>
 	                <td>
                         {_registration_disabled_info}
-                        {if OPENVK_ROOT_CONF['openvk']['preferences']['registration']['disablingReason']}
+                        {if \OPENVK_ROOT_CONF['openvk']['preferences']['registration']['disablingReason']}
                             <br/><br/>{_admin_banned_link_reason}:<br>
-                            <b>{php echo OPENVK_ROOT_CONF['openvk']['preferences']['registration']['disablingReason']}</b>
+                            <b>{php echo \OPENVK_ROOT_CONF['openvk']['preferences']['registration']['disablingReason']}</b>
                         {/if}
 	                </td>
 	            </tr>
